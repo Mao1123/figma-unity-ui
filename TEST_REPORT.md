@@ -59,3 +59,11 @@ These are explicit remaining integration checks, not passed tests.
 
 No official packaging tool was found in the installed skill tooling. The repository
 and optional ordinary ZIP are distribution artifacts, not official certification.
+# Strict fidelity update — 2026-09-10
+
+- Python: `python -m unittest discover -s tests -v`: **18 tests passed** (12 existing + 6 fidelity regressions).
+- Skill: `python -X utf8 .../skill-creator/scripts/quick_validate.py .`: **valid**. UTF-8 mode is required for this Windows environment's Chinese content.
+- Comparator defaults now require exact visible pixels; explicit tolerances remain available for pre-agreed rendering contracts. Ratio 1 and threshold 255 are rejected.
+- Local regression against the previously generated teacher dashboard: exact comparison **FAIL**, changed-pixel ratio 0.9974643133, MAE 13.08554736. This is expected: the previous reconstruction is not pixel-identical. It does not certify the implementation or alter the Unity project.
+- No new Unity C# changes in this update. Historical Editor smoke results below remain limited to technical checks and do not establish visual fidelity.
+- These tests check deterministic helpers, not a guarantee that screenshot reconstruction can recover missing source layers. Source inventory and manual visual review remain required.

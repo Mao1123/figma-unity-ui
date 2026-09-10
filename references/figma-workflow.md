@@ -40,3 +40,8 @@ a first-build tool. Ongoing sync uses inspected Editor/MCP edits and reviewed di
 If only a screenshot is available, create a measurement/classification plan and, if
 requested and tools permit, reconstruct editable Figma shapes/text before export.
 Do not claim synthetic example node IDs are from a real remote file.
+
+Tool quota or connection failure does not authorize substituting visuals. Continue
+source-faithful local work where possible, retain unresolved original assets, and
+report remote generation separately. Creating an empty file is not reconstructing
+the design. Apply [visual fidelity](visual-fidelity.md) before fallback execution.

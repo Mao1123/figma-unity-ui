@@ -1,9 +1,17 @@
 ---
 name: figma-unity-ui
-description: 将 UI 效果图、Figma 设计稿或节点转换为 Unity UGUI 的透明 PNG/SVG 素材、双 Manifest、Sprite 导入设置、9-Slice 和可复用 Prefab/Screen。用于 Figma 切图、Alpha 透明质量检查、Unity UI 重建及 Figma 到 Unity 同步；面向 Unity 2022.3 LTS、Unity 6 和 TextMeshPro。
+description: 严格按 UI 效果图、Figma 设计稿或节点还原 Unity UGUI，保留原始 UI 外观，生成透明 PNG/SVG、Manifest、Sprite 设置、9-Slice 和 Prefab/Screen，并执行 Alpha 与整屏/局部视觉验收。用于 Figma 切图、Unity UI 还原和同步；面向 Unity 2022.3 LTS、Unity 6、TextMeshPro。
 ---
 
 # Figma → Unity UI
+
+## 严格还原合同（默认）
+
+用户给出的效果图／Figma 是视觉真值，默认目标是完全一致，而非重新设计。执行前必读 [视觉还原与验收](references/visual-fidelity.md)。不得自行替换图标、Logo、字体、背景、插画、渐变、阴影、圆角、布局、图表分段或状态样式；“简单形状用原生 UI”只决定实现方式，不授权改变外观。演示生成器和基础 Prefab 不是用户设计素材。
+
+先保存不可变参考图与逐元素来源、测量、实现方法及未解决差异记录。能从原节点导出的就导出原节点；截图缺失细节时忠实重建并对照验证，不用通用图标或 AI 重绘冒充原素材。只有用户明确授权的设计变更才可替换，记录授权原文。无法可靠还原的部分保持未通过，继续完成不受影响的区域；必要时请求缺失原始素材，禁止悄悄降低目标。
+
+技术通过、Alpha 通过、视觉通过分别报告。完成必须有真实 Unity 渲染与同尺寸参考图的整屏及局部对照、黑白／棋盘背景检查和逐项视觉结论。`compare_images.py --exact` 检查像素完全一致；非零差异不能称为像素一致。抗锯齿等容差只能按预先记录的验收合同使用，不能为消除失败而提高阈值、模糊、拉伸或删掉失败区域。截图无法保证恢复原始图层、字体及被遮挡像素，必须如实说明，不能承诺工具必然实现零差异。
 
 ## 工作边界
 
@@ -20,7 +28,7 @@ description: 将 UI 效果图、Figma 设计稿或节点转换为 Unity UGUI 的
 5. **强制透明验收**：读 [Alpha 质量](references/alpha-quality.md)。透明 circle、rounded、capsule、irregular、icon、badge、decoration 必须运行 Alpha Audit，并实际查看黑底、白底和棋盘格。文件写入、脚本退出码 0、`PASS` 均不等于视觉验收通过。`REVIEW` 色边提示必须检查并记录结论；存在底色、裁切或错误边缘时重出。不能把 `alphaRequired` 改 false 来通过检查。
 6. **Unity 导入**：读 [Unity Import](references/unity-import.md)；优先项目规范，否则用 `Assets/UI`。校验 Manifest 和文件，再通过 Unity MCP／Editor 执行导入器。[9-slice](references/nine-slice.md) 的 border 以设计单位记录，导入时乘导出倍率。
 7. **组件与 Screen**：读 [Prefab 工作流](references/unity-prefabs.md)。优先 Unity MCP 或附带 Editor 构建器；不手写 `.prefab` YAML。按钮根挂 Button，子级 Background／Icon／Label，Label 为 TMP。简单状态用 ColorTint，明显形态变化用 SpriteState。保留项目已有交互和组件逻辑。
-8. **Unity QA**：检查 Sprite、Alpha、方形底、Missing Sprite／Font／Script、Prefab 引用、语义层级、可编辑 TMP、可交互 Button、9-slice、至少两种宽高比及 Console Error。参考分辨率截图可用 `compare_images.py` 与设计图比较。没有 Editor 时交付资源和脚本，明确运行验证未执行，不声称已创建或验证 Prefab。
+8. **Unity QA**：检查 Sprite、Alpha、方形底、Missing Sprite／Font／Script、Prefab 引用、语义层级、可编辑 TMP、可交互 Button、9-slice、至少两种宽高比及 Console Error。必须按视觉还原参考执行整屏和局部比较，不能用节点数量或编译通过代替视觉验收。无真实渲染、灰屏／空白捕获或有未解决差异时视觉未通过。没有 Editor 时交付资源和脚本，明确运行验证未执行，不声称已创建或验证 Prefab。
 
 ## 常用命令
 
@@ -39,7 +47,7 @@ Figma MCP 不可用：使用用户提供的节点导出／源图，记录缺失�
 
 ## 交付
 
-提供素材、两个 Manifest、QA 图片与报告、导入／Prefab 路径和验证状态。明确色边启发式误报、源图低清、替代字体、SVG 支持、未连接 Viewport 或未绑定业务事件等实际限制。
+提供素材、两个 Manifest、QA 图片与报告、导入／Prefab 路径和验证状态，同时交付 `visual_fidelity_report.json`（来源、锁定阈值、区域、授权变更、逐项审查、剩余差异）。技术通过但视觉未通过只能交付“结构初稿／待视觉修正”。Figma 额度不足不授权简化视觉，空远程文件不算 Figma 重建完成。明确源图低清、SVG 支持、未连接 Viewport 或未绑定业务事件等实际限制。
 
 ## 触发示例
 

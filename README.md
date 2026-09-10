@@ -13,6 +13,10 @@ The whole screen screenshot is reference material only.
 
 ## Features
 
+- **默认严格还原，不擅自替换 UI**：原图标、Logo、字体、插画、背景材质和图表状态均属于视觉合同。原生组件只改变实现方式，不改变设计。
+- **技术、Alpha、视觉分开验收**：缺少真实 Unity 对照图或存在未解决差异时，不得宣称完整交付。截图信息不足时明确请求原素材，不能偷偷降级。
+- **整屏 + 小区域图像比较**：严格模式检测每个可见像素差异，局部区域避免小图标错误被整屏平均值掩盖。[还原规则](references/visual-fidelity.md)。
+
 - Fixed BBox extraction with 1x/2x/3x/4x output (default 2x), no automatic trim.
 - Explicit matte-based background removal preserving soft alpha and padding.
 - Alpha audit for corners, edges, empty assets, wrong dimensions, rectangular
@@ -79,6 +83,12 @@ approval still requires inspecting every transparent asset. The generated demo
 assets are intentionally simple, original geometry for pipeline testing.
 
 ## Codex Usage
+
+```text
+使用 $figma-unity-ui 严格还原这张效果图到指定 Unity 项目。禁止自行替换任何 UI、图标、字体或背景；逐元素保留来源，并执行整屏和局部视觉对照。有无法还原的部分请明确记录，不要用近似素材冒充完成。
+```
+
+严格还原是默认行为，不需要每次重复这段提示。用户明确要求重新设计时才调整相应视觉目标。
 
 ```text
 使用 $figma-unity-ui 将当前 Figma 页面切分成 Unity UGUI 可用素材，导出透明 PNG，并直接同步到我的 Unity 项目。
@@ -192,6 +202,16 @@ The viewport requires a project camera/RenderTexture; button events require
 application callbacks. This is a UI pipeline example, not a medical simulator.
 
 ## Tests and Validation
+
+视觉检查命令（从 Skill 目录执行，输入为任务实际文件）：
+
+```bash
+python scripts/compare_images.py reference.png unity.png --exact --regions regions.json --diff qa/diff.png --overlay qa/overlay.png --report qa/comparison.json
+```
+
+`regions.json` 格式见 [视觉验收](references/visual-fidelity.md)。默认阈值现在为零；同尺寸、整屏和全部区域都通过才得到 `NUMERICAL_PASS`，仍需人工视觉审查。`--measure-only` 只测量，不能作为验收；拒绝 `--max-changed-ratio 1` 等必然通过的阈值。工具不自动拉伸或模糊输入。
+
+新增 6 项回归测试覆盖小图标替换、单像素变化、高光/Alpha 损失、透明像素 RGB、尺寸/区域校验、虚假宽松阈值及证据文件输出。
 
 The initial local run passes 12 behavioral tests covering the five requested
 representative cases plus density, clipping, empty/RGB images, colored fringe,
