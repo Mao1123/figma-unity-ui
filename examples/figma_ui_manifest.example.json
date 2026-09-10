@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "screenName": "AcupointLearning",
+  "figmaNodeId": "100:200",
+  "referenceResolution": [
+    1080,
+    1920
+  ],
+  "unityPrefab": "Assets/UI/Prefabs/Screens/Screen_AcupointLearning.prefab",
+  "matchWidthOrHeight": 0.5,
+  "nodes": [
+    {
+      "id": "background",
+      "figmaNodeId": "demo:background",
+      "parentId": "",
+      "name": "Background",
+      "kind": "Image",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1080,
+        "height": 1920
+      },
+      "color": "#edf4f5"
+    },
+    {
+      "id": "header",
+      "figmaNodeId": "demo:header",
+      "parentId": "",
+      "name": "Header",
+      "kind": "Frame",
+      "bounds": {
+        "x": 40,
+        "y": 48,
+        "width": 1000,
+        "height": 120
+      }
+    },
+    {
+      "id": "back",
+      "figmaNodeId": "demo:back",
+      "parentId": "header",
+      "name": "Btn_Back",
+      "kind": "Button",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 120,
+        "height": 96
+      },
+      "text": "Back",
+      "assetNodeId": "123:456"
+    },
+    {
+      "id": "title",
+      "figmaNodeId": "demo:title",
+      "parentId": "header",
+      "name": "Title",
+      "kind": "Text",
+      "bounds": {
+        "x": 160,
+        "y": 0,
+        "width": 800,
+        "height": 96
+      },
+      "text": "Acupoint Learning",
+      "fontSize": 48,
+      "color": "#123b46"
+    },
+    {
+      "id": "nav",
+      "figmaNodeId": "demo:nav",
+      "parentId": "",
+      "name": "Navigation",
+      "kind": "Frame",
+      "bounds": {
+        "x": 40,
+        "y": 208,
+        "width": 1000,
+        "height": 112
+      },
+      "layout": "Horizontal",
+      "spacing": 20,
+      "padding": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "id": "acupoint",
+      "figmaNodeId": "demo:acupoint",
+      "parentId": "nav",
+      "name": "Btn_Acupoint",
+      "kind": "Button",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 320,
+        "height": 112
+      },
+      "text": "Acupoint"
+    },
+    {
+      "id": "meridian",
+      "figmaNodeId": "demo:meridian",
+      "parentId": "nav",
+      "name": "Btn_Meridian",
+      "kind": "Button",
+      "bounds": {
+        "x": 340,
+        "y": 0,
+        "width": 320,
+        "height": 112
+      },
+      "text": "Meridian"
+    },
+    {
+      "id": "muscle",
+      "figmaNodeId": "demo:muscle",
+      "parentId": "nav",
+      "name": "Btn_Muscle",
+      "kind": "Button",
+      "bounds": {
+        "x": 680,
+        "y": 0,
+        "width": 320,
+        "height": 112
+      },
+      "text": "Muscle"
+    },
+    {
+      "id": "content",
+      "figmaNodeId": "demo:content",
+      "parentId": "",
+      "name": "Content",
+      "kind": "Frame",
+      "bounds": {
+        "x": 40,
+        "y": 368,
+        "width": 1000,
+        "height": 1320
+      }
+    },
+    {
+      "id": "model",
+      "figmaNodeId": "demo:model",
+      "parentId": "content",
+      "name": "ModelViewport",
+      "kind": "Viewport",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 1000,
+        "height": 880
+      },
+      "color": "#d8e5e8"
+    },
+    {
+      "id": "info",
+      "figmaNodeId": "demo:info",
+      "parentId": "content",
+      "name": "InformationPanel",
+      "kind": "Image",
+      "bounds": {
+        "x": 0,
+        "y": 928,
+        "width": 1000,
+        "height": 392
+      },
+      "assetNodeId": "123:457",
+      "nineSlice": true
+    },
+    {
+      "id": "info_text",
+      "figmaNodeId": "demo:info_text",
+      "parentId": "info",
+      "name": "Description",
+      "kind": "Text",
+      "bounds": {
+        "x": 40,
+        "y": 40,
+        "width": 920,
+        "height": 280
+      },
+      "text": "Explore acupoints, meridians and muscle anatomy.\nSelect a category to begin.",
+      "fontSize": 32,
+      "color": "#123b46"
+    },
+    {
+      "id": "footer",
+      "figmaNodeId": "demo:footer",
+      "parentId": "",
+      "name": "Footer",
+      "kind": "Frame",
+      "bounds": {
+        "x": 40,
+        "y": 1744,
+        "width": 1000,
+        "height": 112
+      }
+    },
+    {
+      "id": "previous",
+      "figmaNodeId": "demo:previous",
+      "parentId": "footer",
+      "name": "Btn_Previous",
+      "kind": "Button",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 480,
+        "height": 112
+      },
+      "text": "Previous"
+    },
+    {
+      "id": "next",
+      "figmaNodeId": "demo:next",
+      "parentId": "footer",
+      "name": "Btn_Next",
+      "kind": "Button",
+      "bounds": {
+        "x": 520,
+        "y": 0,
+        "width": 480,
+        "height": 112
+      },
+      "text": "Next"
+    }
+  ]
+}

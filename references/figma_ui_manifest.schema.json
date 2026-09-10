@@ -1,0 +1,160 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "screenName": {
+      "type": "string",
+      "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+    },
+    "figmaNodeId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "referenceResolution": {
+      "type": "array",
+      "items": {
+        "type": "number",
+        "exclusiveMinimum": 0
+      },
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "unityPrefab": {
+      "type": "string",
+      "pattern": "^Assets/.+\\.prefab$"
+    },
+    "fontAsset": {
+      "type": "string"
+    },
+    "matchWidthOrHeight": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "nodes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "figmaNodeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parentId": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_]*$"
+          },
+          "kind": {
+            "enum": [
+              "Frame",
+              "Image",
+              "Text",
+              "Button",
+              "Viewport",
+              "Instance"
+            ]
+          },
+          "bounds": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "x": {
+                "type": "number"
+              },
+              "y": {
+                "type": "number"
+              },
+              "width": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "height": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "required": [
+              "x",
+              "y",
+              "width",
+              "height"
+            ]
+          },
+          "assetNodeId": {
+            "type": "string"
+          },
+          "text": {
+            "type": "string"
+          },
+          "fontSize": {
+            "type": "number",
+            "exclusiveMinimum": 0
+          },
+          "color": {
+            "type": "string",
+            "pattern": "^#[0-9a-fA-F]{6}([0-9a-fA-F]{2})?$"
+          },
+          "nineSlice": {
+            "type": "boolean"
+          },
+          "prefabPath": {
+            "type": "string"
+          },
+          "layout": {
+            "enum": [
+              "Horizontal",
+              "Vertical"
+            ]
+          },
+          "spacing": {
+            "type": "number",
+            "minimum": 0
+          },
+          "padding": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "minItems": 4,
+            "maxItems": 4
+          },
+          "mask": {
+            "enum": [
+              "Rect",
+              "Sprite"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "figmaNodeId",
+          "parentId",
+          "name",
+          "kind",
+          "bounds"
+        ]
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "screenName",
+    "figmaNodeId",
+    "referenceResolution",
+    "unityPrefab",
+    "nodes"
+  ],
+  "$schema": "https://json-schema.org/draft/2020-12/schema"
+}

@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "figmaFile": "",
+  "rootNodeId": "100:200",
+  "assets": [
+    {
+      "nodeId": "123:456",
+      "figmaName": "export/icon/back",
+      "assetType": "icon",
+      "fileName": "icon_back.png",
+      "unityPath": "Assets/UI/Icons/icon_back.png",
+      "format": "png",
+      "scaleFactor": 3,
+      "sourceBounds": {
+        "x": 56,
+        "y": 80,
+        "width": 32,
+        "height": 32
+      },
+      "alphaRequired": true,
+      "nineSlice": false,
+      "border": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "nodeId": "123:457",
+      "figmaName": "export/panel/information",
+      "assetType": "panel",
+      "fileName": "panel_information.png",
+      "unityPath": "Assets/UI/Panels/panel_information.png",
+      "format": "png",
+      "scaleFactor": 2,
+      "sourceBounds": {
+        "x": 80,
+        "y": 1320,
+        "width": 96,
+        "height": 96
+      },
+      "alphaRequired": true,
+      "nineSlice": true,
+      "border": [
+        20,
+        20,
+        20,
+        20
+      ]
+    }
+  ]
+}

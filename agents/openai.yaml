@@ -1,0 +1,4 @@
+interface:
+  display_name: "Figma to Unity UI"
+  short_description: "Transparent assets, alpha QA and reusable Unity UI"
+  default_prompt: "使用 $figma-unity-ui 将当前 Figma 设计转换为 Unity UGUI 素材、Manifest 和可复用 Prefab，并执行 Alpha QA。"
